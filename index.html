@@ -189,6 +189,38 @@
         margin: 15px 0;
         display: none;
       }
+
+      .search-container {
+        position: relative;
+        width: 100%;
+      }
+
+      #saranBox {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #1e293b;
+        border: 1px solid var(--primary-color);
+        border-radius: 10px;
+        max-height: 200px;
+        overflow-y: auto;
+        z-index: 1000;
+        display: none; /* Sembunyi kalau gak dipake */
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
+      }
+
+      .saran-item {
+        padding: 12px;
+        border-bottom: 1px solid #334155;
+        cursor: pointer;
+        font-size: 0.9rem;
+      }
+
+      .saran-item:hover {
+        background: var(--primary-color);
+        color: white;
+      }
     </style>
   </head>
   <body>
@@ -200,15 +232,16 @@
 
       <div class="section-title">✍️ Input Transaksi</div>
       <div class="input-group">
-        <input
-          type="text"
-          id="namaProduk"
-          list="saranProduk"
-          oninput="cekHarga()"
-          onfocus="this.value=''"
-          placeholder="Ketik nama produk..."
-          autocomplete="off"
-        />
+        <div class="search-container">
+          <input
+            type="text"
+            id="namaProduk"
+            oninput="cariProduk()"
+            placeholder="Ketik nama produk..."
+            autocomplete="off"
+          />
+          <div id="saranBox"></div>
+        </div>
         <input type="number" id="nominal" placeholder="Harga Jual" />
         <input type="number" id="admin" placeholder="Profit" />
       </div>

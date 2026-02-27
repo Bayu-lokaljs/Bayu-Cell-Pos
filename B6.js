@@ -61,13 +61,44 @@ const daftarProduk = {
 let riwayatPenjualan =
   JSON.parse(localStorage.getItem("riwayatPenjualan")) || [];
 
-function cekHarga() {
-  let nama = document.getElementById("namaProduk").value.toUpperCase();
-  let hargaOtomatis = daftarProduk[nama];
-  if (hargaOtomatis) {
-    document.getElementById("nominal").value = hargaOtomatis;
+function cariProduk() {
+  let input = document.getElementById("namaProduk").value.toUpperCase();
+  let box = document.getElementById("saranBox");
+  box.innerHTML = "";
+
+  if (input.length === 0) {
+    box.display = "none";
+    return;
+  }
+
+  let hasilCari = Object.keys(daftarProduk).filter((item) =>
+    item.includes(input)
+  );
+
+  if (hasilCari.length > 0) {
+    box.style.display = "block";
+    hasilCari.forEach((item) => {
+      let div = document.createElement("div");
+      div.className = "saran-item";
+      div.innerHTML = item.replaceAll("_", " ");
+      div.onclick = function () {
+        document.getElementById("namaProduk").value = item;
+        document.getElementById("nominal").value = daftarProduk[item];
+        box.style.display = "none";
+      };
+      box.appendChild(div);
+    });
+  } else {
+    box.style.display = "none";
   }
 }
+
+// Tambahin ini biar kalau klik di luar, kotak sarannya ilang
+document.addEventListener("click", function (e) {
+  if (e.target.id !== "namaProduk") {
+    document.getElementById("saranBox").style.display = "none";
+  }
+});
 
 function tambahTransaksi() {
   let nama = document.getElementById("namaProduk").value.toUpperCase();
