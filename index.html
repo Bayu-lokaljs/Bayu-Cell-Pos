@@ -205,7 +205,9 @@
           id="namaProduk"
           list="saranProduk"
           oninput="cekHarga()"
-          placeholder="Nama Produk..."
+          onfocus="this.value=''"
+          placeholder="Ketik nama produk..."
+          autocomplete="off"
         />
         <input type="number" id="nominal" placeholder="Harga Jual" />
         <input type="number" id="admin" placeholder="Profit" />
