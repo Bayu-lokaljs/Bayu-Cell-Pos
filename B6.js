@@ -66,6 +66,8 @@ let riwayatPenjualan =
   // intinya, tanpa variabel ini tiap refresh web, semua data bakal hilang/ikut kehapus
   JSON.parse(localStorage.getItem("riwayatPenjualan")) || [];
 
+let stokGudang = JSON.parse(localStorage.getItem("stokGudang")) || {};
+
 //kita bikin fungsi untuk fitur search box(input saran) yang dimana kalo kita input nama dan ketik beberapa huruf, langsung muncul kotak saran produknya di bawah
 //ada 3 alasan knp fungsi ini dibuat: 1. untuk mengubah semua huruf menjadi kapital menyesuaikan daftar produk di atas
 //2. untuk filter/nyaring, misal kita ngetik xl, maka muncul produk saran seperti xl 3gb 3h
@@ -145,6 +147,15 @@ document.addEventListener("click", function (e) {
 function tambahTransaksi() {
   // Ambil data-data dari inputan HTML (Nama, Harga Asli, dan Admin)
   let nama = document.getElementById("namaProduk").value.toUpperCase();
+  // 1. Ambil data waktu lengkap dari sistem komputer saat tombol diklik
+  let waktuSekarang = new Date();
+  // 2. Ambil angka jamnya saja (0-23)
+  let jam = waktuSekarang.getHours();
+  // 3. Ambil angka menitnya saja (0-59)
+  let menit = waktuSekarang.getMinutes();
+  // 4. Gabungin jam dan menit jadi format teks biar enak dibaca (Contoh: 19:30)
+  // Kita pake template literal (backtick) biar rapi
+  let jamMenit = `${jam}:${menit}`;
   // parseInt itu paksa jadi angka, || 0 itu jaga-jaga kalau kosong biar gak error (dianggap nol)
   let nominal = parseInt(document.getElementById("nominal").value) || 0;
   let admin = parseInt(document.getElementById("admin").value) || 0;
@@ -157,7 +168,7 @@ function tambahTransaksi() {
     // Rumus total: harga produk ditambah biaya admin
     let total = nominal + admin;
     // Push itu masukin data baru ke keranjang riwayatPenjualan (formatnya objek)
-    riwayatPenjualan.push({ nama, nominal, admin, total });
+    riwayatPenjualan.push({ jamMenit, nama, nominal, admin, total });
     // Panggil fungsi buat nampilin daftar yang baru di layar
     tampilkanRiwayat();
 
@@ -176,17 +187,16 @@ function tambahTransaksi() {
 function tampilkanRiwayat() {
   let wadah = document.getElementById("riwayatTransaksi");
   let untungSeharian = 0;
-
   // Kita bikin kepala tabelnya dulu pake template string (backtick)
   let html = `
     <tr>
+      <th>Waktu</th>
       <th>Produk</th>
       <th>Total</th>
       <th>Profit</th>
       <th>Aksi</th>
     </tr>
   `;
-
   // Ngulangin setiap data di keranjang buat dijadiin baris tabel
   riwayatPenjualan.forEach((item, index) => {
     // Tambahin semua biaya admin buat tau total untung kita
@@ -194,6 +204,7 @@ function tampilkanRiwayat() {
     // Gabungin baris demi baris pake +=
     html += `
       <tr>
+        <td>${item.jamMenit}</td>
         <td>${item.nama.replaceAll("_", " ")}</td>
         <td>Rp${item.total.toLocaleString("id-ID")}</td>
         <td>Rp${item.admin.toLocaleString("id-ID")}</td>
@@ -201,7 +212,6 @@ function tampilkanRiwayat() {
       </tr>
     `;
   });
-
   // Tampilkan semua baris yang udah dirakit ke dalam tabel HTML
   wadah.innerHTML = html;
   document.getElementById("totalCuan").innerHTML = `
@@ -217,16 +227,13 @@ function tampilkanRiwayat() {
 function muatDaftarHarga() {
   let produk = document.getElementById("tampilanHarga");
   let listSaran = document.getElementById("saranProduk");
-
   // for in ini buat ngebongkar daftarProduk yang di paling atas tadi
   for (let key in daftarProduk) {
     let namaBersih = key.replaceAll("_", " ");
-
     // Nampilin daftar harga polosan biar Bayu bisa liat-liat harga
     produk.innerHTML += `<div class="item">${namaBersih}: Rp${daftarProduk[
       key
     ].toLocaleString("id-ID")}</div>`;
-
     // Masukin juga ke dalam elemen <datalist> (opsional buat backup saran browser)
     listSaran.innerHTML += `<option value="${key}">${namaBersih}</option>`;
   }
@@ -248,6 +255,12 @@ function simpanData() {
 
 //kita bikin fungsi untuk emnghapus data yang kita inginkan saja
 function hapusSatu(index) {
+  //kita bikin variabel untuk konfirmasi biar ga langsung jalan
+  let yakin = confirm("Yakin Mau Dihapus?");
+  //kita buat logika ketika gajadi ngehapus
+  if (yakin === false) {
+    return;
+  }
   // Splice itu perintah buat buang satu barang di posisi (index) tertentu
   riwayatPenjualan.splice(index, 1);
   // Update lagi tampilannya setelah satu data dihapus
