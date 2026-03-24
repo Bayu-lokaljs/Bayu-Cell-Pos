@@ -1,130 +1,91 @@
+// 1. DAFTAR PRODUK (PASTIKAN SEMUA PAKAI FORMAT {harga, untung})
+// Di sini lo simpan "ingatan" harga modal & untung.
+// Kalau mau nambah produk baru, tinggal contek formatnya di sini.
 const daftarProduk = {
-  XL_3GB_1H: 7000,
-  XL_3GB_3H: 10000,
-  XL_5GB_10H: 20000,
-  XL_7GB_7H: 24000,
-  XL_11GB_7H: 29000,
-  XL_20GB_7H: 35000,
-  AXIS_4GB_1H: 7000,
-  AXIS_5GB_2H: 10000,
-  "AXIS_2.5GB_3H": 11000,
-  AXIS_5GB_3H: 13000,
-  AXIS_12GB_3H: 18000,
-  AXIS_6GB_5H: 17000,
-  AXIS_13GB_5H: 23000,
-  AXIS_25GB_5H: 28000,
-  AXIS_8GB_15H: 30000,
-  AXIS_6GB_30H: 32000,
-  SMART_4GB_3H: 11000,
-  SMART_4GB_14H: 20000,
-  SMART_14GB_7H: 30000,
-  SMART_6GB_30H: 40000,
-  "SMART_1GB/H_30H": 78000,
-  "SMART_2GB/H_30H": 93000,
-  IM3_2GB_1H: 6000,
-  IM3_5GB_2H: 10000,
-  IM3_4GB_5H: 15000,
-  IM3_8GB_5H: 20000,
-  IM3_11GB_7H: 25000,
-  IM3_19GB_7H: 31000,
-  IM3_8GB_30H: 33000,
-  "TRI_2.5GB_1H": 7000,
-  TRI_6GB_2H: 10000,
-  TRI_5GB_3H: 13000,
-  TRI_10GB_5H: 23000,
-  TRI_12GB_7H: 26000,
-  TRI_10GB_28H: 35000,
-  TSEL_4GB_1H: 7000,
-  TSEL_5GB_2H: 10000,
-  TSEL_2GB_3H: 11000,
-  "TSEL_3.5GB_5H": 14000,
-  TSEL_4GB_5H: 16000,
-  TSEL_10GB_7H: 30000,
-  GOLDA: 5000,
-  KOPIABC: 5000,
-  AIRMINERAL: 4000,
-  NIPISMADU: 5000,
-  PUCUK: 4000,
-  TEBS: 5000,
-  FLORIDINA: 4000,
-  TYPE_C_15K: 15000,
-  TYPE_C_20K: 20000,
-  TYPE_MICRO_15K: 15000,
-  TYPE_MICRO_20K: 20000,
-  TYPE_IPHONE_20K: 20000,
-  EARPHONE_15K: 15000,
-  EARPHONE_20K: 20000,
-  EARPHONE_25K: 25000,
-  EARPHONE_30K: 30000,
+  XL_3GB_1H: { harga: 7000, untung: 1000 },
+  XL_3GB_3H: { harga: 11000, untung: 1000 },
+  XL_5GB_10H: { harga: 20000, untung: 2000 },
+  XL_7GB_7H: { harga: 24000, untung: 2000 },
+  XL_11GB_7H: { harga: 29000, untung: 2000 },
+  XL_20GB_7H: { harga: 35000, untung: 2500 },
+  AXIS_5GB_1H: { harga: 8000, untung: 1000 },
+  AXIS_5GB_2H: { harga: 10000, untung: 1000 },
+  "AXIS_3.5GB_3H": { harga: 11000, untung: 1500 },
+  AXIS_5GB_3H: { harga: 13000, untung: 1500 },
+  AXIS_13GB_3H: { harga: 18000, untung: 2000 },
+  AXIS_6GB_5H: { harga: 17000, untung: 2000 },
+  AXIS_13GB_5H: { harga: 25000, untung: 2000 },
+  AXIS_25GB_5H: { harga: 30000, untung: 2000 },
+  AXIS_9GB_15H: { harga: 30000, untung: 2000 },
+  AXIS_6GB_30H: { harga: 32000, untung: 2500 },
+  SF_4GB_3H: { harga: 11000, untung: 1000 },
+  SF_4GB_14H: { harga: 21000, untung: 2000 },
+  SF_10GB_6H: { harga: 22000, untung: 2000 },
+  SF_21GB_7H: { harga: 32000, untung: 2500 },
+  "SF_1GB/H_30H": { harga: 78000, untung: 3000 },
+  "SF_2GB/H_30H": { harga: 93000, untung: 4000 },
+  IM3_2GB_1H: { harga: 6000, untung: 1000 },
+  IM3_5GB_2H: { harga: 11000, untung: 1500 },
+  IM3_4GB_5H: { harga: 15000, untung: 2000 },
+  IM3_8GB_5H: { harga: 20000, untung: 2000 },
+  IM3_11GB_7H: { harga: 25000, untung: 2000 },
+  IM3_19GB_7H: { harga: 31000, untung: 2500 },
+  IM3_8GB_30H: { harga: 33000, untung: 2500 },
+  "TRI_2.5GB_1H": { harga: 8000, untung: 1000 },
+  TRI_6GB_2H: { harga: 11000, untung: 1500 },
+  TRI_5GB_3H: { harga: 14000, untung: 2000 },
+  TRI_10GB_5H: { harga: 23000, untung: 2000 },
+  TRI_12GB_7H: { harga: 26000, untung: 2000 },
+  TRI_10GB_28H: { harga: 35000, untung: 2500 },
+  TSEL_4GB_1H: { harga: 8000, untung: 1000 },
+  TSEL_5GB_2H: { harga: 12000, untung: 1000 },
+  TSEL_2GB_3H: { harga: 11000, untung: 1500 },
+  "TSEL_3.5GB_5H": { harga: 14000, untung: 2000 },
+  TSEL_4GB_5H: { harga: 16000, untung: 2000 },
+  TSEL_10GB_7H: { harga: 30000, untung: 2000 },
 };
 
-//kita bikin variabel untuk nyimpen data/memori
+// 2. SISTEM MEMORI (LOCAL STORAGE)
+// Baris ini tugasnya "manggil ingatan" dari browser pas web dibuka.
+// Kalau kosong, dia bikin array baru [].
 let riwayatPenjualan =
-  //json.parse itu ngubah text/string polosan menjadi menjadi sedia kala(punya kita kan objek dan bisa bergerak).
-  //localstorage.getitem itu kita ngambil data dari label riwayatpenjualan, misalnya kyk xl 3gb 3h
-  // || [] itu artinya kalau gk ada. maksudnya kalau lemari kosong, kita mulai dari daftar kosong. kalo gaada tanda itu mlh error karena komputer bakal nyari data yang gaada.
-  // intinya, tanpa variabel ini tiap refresh web, semua data bakal hilang/ikut kehapus
   JSON.parse(localStorage.getItem("riwayatPenjualan")) || [];
 
-let stokGudang = JSON.parse(localStorage.getItem("stokGudang")) || {};
-
-//kita bikin fungsi untuk fitur search box(input saran) yang dimana kalo kita input nama dan ketik beberapa huruf, langsung muncul kotak saran produknya di bawah
-//ada 3 alasan knp fungsi ini dibuat: 1. untuk mengubah semua huruf menjadi kapital menyesuaikan daftar produk di atas
-//2. untuk filter/nyaring, misal kita ngetik xl, maka muncul produk saran seperti xl 3gb 3h
-//3. bikin kotak sarannya yang gaib, dan bakal muncul ketika menginput produk
+// 3. FITUR SEARCH / AUTOCOMPLETE
 function cariProduk() {
-  //variabel ini mengarah ke kotak input nama produk, dan kita buat semua kata2nya kapital
-  //tapi variabel ini cuma buat mengarahkan ke input dan membaca apa yang kita input
   let input = document.getElementById("namaProduk").value.toUpperCase();
-  //nah ini variabel yang mengarah ke saran produknya
   let box = document.getElementById("saranBox");
-  //ini ceritanya kita mengosongkan si saran produknya sembari nunggu muncul ketika ada yg menginput
-  box.innerHTML = "";
+  box.innerHTML = ""; // Bersihin kotak saran lama
 
-  //kita bikin logika jika tidak ada yang menginput, brrti box saran tidak muncul
-  //input.length === 0 itu artinya panjang huruf yang diinput sama dengan 0
   if (input.length === 0) {
-    //jika panjang huruf sama dengon 0, maka tampilan/display dari boxnya tidak ada. artinya tidak ada yang diinput
+    // Kalau input kosong, kotak saran sembunyi
     box.style.display = "none";
-    //return dikoding artinya stop disini, kalo gaada return ini, dia bakal nabrak kodingan dibawah, bikin error
     return;
   }
 
-  //kita bikin variabel pencari kata ke daftar produk dari apa yang kita input
-  //object keys itu nyari label di daftar produk, misalnya kyk golda: 5000, dia ambil labelnya aja yaitu si golda
-  //filter item ini semacam corong saringan, diangumpulin item2 tadi satu2, dan memfilter yang dimaksud
+  // Cek apakah nama yang diketik pas banget sama kunci di kamus
+  if (daftarProduk[input]) {
+    document.getElementById("nominal").value = daftarProduk[input].harga;
+  }
+
+  // Cari nama produk yang mengandung huruf yang diketik (filter)
   let hasilCari = Object.keys(daftarProduk).filter((item) =>
-    //nah ini hasilnya, dia memfilter item yang include dari yang kita input misalnya xl, semua item dari xl bakal muncul
     item.includes(input)
   );
 
-  //kita bikin logika jika jumlah dari box saran itu lebih dari 0
   if (hasilCari.length > 0) {
-    //maka memunculkan box sarannya
-    box.style.display = "block";
-    //foreach item itu artinya untuk setiap item dari hasil cari
-    //knp menggunakan foreach? karena untuk memanggil semua item hasil input yang sudah difilter oleh hasilcari untuk melakukan sesuatu
+    box.style.display = "block"; // Munculin kotak kalau ada hasil
     hasilCari.forEach((item) => {
-      //kita bikin variabel untuk memunculkan box saran itu secara gaib di js, tanpa perlu html
-      //createelement itu membuat sesuatu dari nol, dan yang ingin dibuat adalah div, div itu semacam baris baru dan lebih professional ketimbang pakai br
-      //div kan pakai html, knp pakai js? karena kita gatau berapa banyak saran yang akan muncul, jika 5 maka perlu 5 div. dengan createelement, js bakal bikin div sesuai kebutuhan saat itu juga
       let div = document.createElement("div");
-      //perintah ini dibuat untuk menyambungkan div tadi dengan css
       div.className = "saran-item";
-      //perintah ini dibuat untuk menampilkan hasilnya(si item/isi box saran) di web tanpa underscore trus dikasih spasi
-      div.innerHTML = item.replaceAll("_", " ");
-      //ini adalah event handler assignment, perintah ini dibuat agar item/div tadi masing2 bisa diklik dan masuk ke input. dan tidak akan aktif kecuali terdeteksi sentuhan klik pada div tersebut
+      div.innerHTML = item.replaceAll("_", " "); // Ubah garis bawah jadi spasi biar enak dibaca
+
+      // Kalau saran diklik, otomatis ngisi kotak input & harga
       div.onclick = function () {
-        //misal kita input xl, maka kodingan ini akan memunculkan box saran seperti xl 3g 3h dan yang lainnya
         document.getElementById("namaProduk").value = item;
-        //ini harganya langsung otomatis
-        document.getElementById("nominal").value = daftarProduk[item];
-        //dan setelah diklik, box saran menghilng
+        document.getElementById("nominal").value = daftarProduk[item].harga;
         box.style.display = "none";
       };
-      //dan setelah semuanya sudah diatur(semua diatas itu adalah rumus), maka kodingan ini lh yg memunculkan hasil akhirnya
-      //box adalah box saran, appendchild adalah dom(document object model), elemen2 web disusun/dibuat seperti pohon yang memiliki hubungan orang tua(parent) dan anak(child)
-      //menempelkan(append)/menampilkan child/anak
       box.appendChild(div);
     });
   } else {
@@ -132,141 +93,202 @@ function cariProduk() {
   }
 }
 
-// Tambahin ini biar kalau klik di luar, kotak sarannya ilang
-// document itu seluruh halaman web, addEventListener itu kayak masang kuping/sensor
-// 'click' artinya dia dengerin kalau ada yang nge-klik apa pun di layar
-document.addEventListener("click", function (e) {
-  // if (e.target.id !== "namaProduk") artinya: kalau yang diklik BUKAN kotak input nama
-  if (e.target.id !== "namaProduk") {
-    // maka laci saran kita tutup (display: none), biar gak nyampah di layar
-    document.getElementById("saranBox").style.display = "none";
-  }
-});
-
-//kita bikin fungsi untuk menambahkan transaksi
-function tambahTransaksi() {
-  // Ambil data-data dari inputan HTML (Nama, Harga Asli, dan Admin)
-  let nama = document.getElementById("namaProduk").value.toUpperCase();
-  // 1. Ambil data waktu lengkap dari sistem komputer saat tombol diklik
-  let waktuSekarang = new Date();
-  // 2. Ambil angka jamnya saja (0-23)
-  let jam = waktuSekarang.getHours();
-  // 3. Ambil angka menitnya saja (0-59)
-  let menit = waktuSekarang.getMinutes();
-  // 4. Gabungin jam dan menit jadi format teks biar enak dibaca (Contoh: 19:30)
-  // Kita pake template literal (backtick) biar rapi
-  let jamMenit = `${jam}:${menit}`;
-  // parseInt itu paksa jadi angka, || 0 itu jaga-jaga kalau kosong biar gak error (dianggap nol)
-  let nominal = parseInt(document.getElementById("nominal").value) || 0;
-  let admin = parseInt(document.getElementById("admin").value) || 0;
-  let struk = document.getElementById("struk");
-
-  // Logika validasi: kalau ada yang kosong atau nol, kasih peringatan (alert)
-  if (nama === "" || nominal <= 0 || admin <= 0) {
-    alert("Isi Data Lengkap!");
-  } else {
-    // Rumus total: harga produk ditambah biaya admin
-    let total = nominal + admin;
-    // Push itu masukin data baru ke keranjang riwayatPenjualan (formatnya objek)
-    riwayatPenjualan.push({ jamMenit, nama, nominal, admin, total });
-    // Panggil fungsi buat nampilin daftar yang baru di layar
-    tampilkanRiwayat();
-
-    // Reset/kosongin lagi kotak inputnya biar siap buat transaksi berikutnya
-    document.getElementById("namaProduk").value = "";
-    document.getElementById("nominal").value = "";
-    document.getElementById("admin").value = "";
-
-    // Munculin notif berhasil di bawah tombol
-    struk.style.display = "block";
-    struk.innerHTML = `✅ Berhasil! Total: Rp${total.toLocaleString("id-ID")}`;
-  }
-}
-
-//kita bikin fungsi untuk menampilkan hasil menjadi riwayat transaksi dan tidak hilng ketika direfresh
-function tampilkanRiwayat() {
-  let wadah = document.getElementById("riwayatTransaksi");
-  let untungSeharian = 0;
-  // Kita bikin kepala tabelnya dulu pake template string (backtick)
-  let html = `
-    <tr>
-      <th>Waktu</th>
-      <th>Produk</th>
-      <th>Total</th>
-      <th>Profit</th>
-      <th>Aksi</th>
-    </tr>
-  `;
-  // Ngulangin setiap data di keranjang buat dijadiin baris tabel
-  riwayatPenjualan.forEach((item, index) => {
-    // Tambahin semua biaya admin buat tau total untung kita
-    untungSeharian += item.admin;
-    // Gabungin baris demi baris pake +=
-    html += `
-      <tr>
-        <td>${item.jamMenit}</td>
-        <td>${item.nama.replaceAll("_", " ")}</td>
-        <td>Rp${item.total.toLocaleString("id-ID")}</td>
-        <td>Rp${item.admin.toLocaleString("id-ID")}</td>
-        <td><button class="btn-hapus" onclick="hapusSatu(${index})">Hapus</button></td>
-      </tr>
-    `;
-  });
-  // Tampilkan semua baris yang udah dirakit ke dalam tabel HTML
-  wadah.innerHTML = html;
-  document.getElementById("totalCuan").innerHTML = `
-    <div class="profit-card">Total Profit: Rp${untungSeharian.toLocaleString(
-      "id-ID"
-    )}</div>
-  `;
-  // Panggil fungsi simpan biar datanya masuk ke memori permanen browser (Local Storage)
-  simpanData();
-}
-
-//kita bikin fungsi untuk menambahkan daftar produk di web
+// 4. GENERATOR DAFTAR HARGA
 function muatDaftarHarga() {
   let produk = document.getElementById("tampilanHarga");
   let listSaran = document.getElementById("saranProduk");
-  // for in ini buat ngebongkar daftarProduk yang di paling atas tadi
+  if (!produk) return; // 'Safety check' biar gak error kalau elemen HTML ilang/gaada
+
+  produk.innerHTML = "";
   for (let key in daftarProduk) {
     let namaBersih = key.replaceAll("_", " ");
-    // Nampilin daftar harga polosan biar Bayu bisa liat-liat harga
-    produk.innerHTML += `<div class="item">${namaBersih}: Rp${daftarProduk[
-      key
-    ].toLocaleString("id-ID")}</div>`;
-    // Masukin juga ke dalam elemen <datalist> (opsional buat backup saran browser)
-    listSaran.innerHTML += `<option value="${key}">${namaBersih}</option>`;
+    // Gunakan optional chaining (?.) biar aman kalau datanya undefined
+    let harga = daftarProduk[key]?.harga || 0;
+
+    // Gambar daftar harga ke layar
+    produk.innerHTML += `<div class="item">${namaBersih}: Rp${harga.toLocaleString(
+      "id-ID"
+    )}</div>`;
+
+    // Masukin juga ke list dropdown/jatuh ke bawah (datalist)
+    if (listSaran) {
+      listSaran.innerHTML += `<option value="${key}">${namaBersih}</option>`;
+    }
   }
 }
 
-//kita buat fungsi untuk mereset data berserta visualnya
-function resetData() {
-  // Kosongin semua isi keranjang (riwayat) jadi nol lagi
-  riwayatPenjualan = [];
-  tampilkanRiwayat();
+// 5. PENCATAT & PENGHITUNG CUAN (RIWAYAT)
+function tampilkanRiwayat() {
+  let wadah = document.getElementById("riwayatTransaksi");
+  if (!wadah) return;
+
+  let untungSeharian = 0; // Tabungan profit yang bakal terus nambah di loop
+  let html = `<tr><th>Waktu</th><th>Produk</th><th>Total</th><th>Profit</th><th>Aksi</th></tr>`;
+
+  riwayatPenjualan.forEach((item, index) => {
+    // Pastikan nilai-nilainya ada, kalau gak ada kasih 0 biar gak error toLocaleString
+    let total = item.total || 0;
+    let untung = item.untung || 0;
+    untungSeharian += untung; // Setiap baris, untung ditambahin ke total profit
+
+    // Susun baris tabel satu demi satu
+    html += `
+      <tr>
+        <td>${item.jamMenit}</td>
+        <td>${(item.nama || "").replaceAll("_", " ")}</td>
+        <td>Rp${total.toLocaleString("id-ID")}</td>
+        <td>Rp${untung.toLocaleString("id-ID")}</td>
+        <td><button class="btn-hapus" onclick="hapusSatu(${index})">Hapus</button></td>
+      </tr>`;
+  });
+
+  wadah.innerHTML = html; // Tempel semua baris ke tabel sekaligus
+
+  // Update tampilan kartu Total Profit di bawah
+  let totalCuanElemen = document.getElementById("totalCuan");
+  let warna = untungSeharian > 5000 ? "green" : "orange";
+  if (totalCuanElemen) {
+    totalCuanElemen.innerHTML = `<div class="profit-card" style="border-left: 10px solid ${warna}">Total Profit: Rp${untungSeharian.toLocaleString(
+      "id-ID"
+    )}</div>`;
+  }
+  simpanData(); // Setiap ada perubahan, langsung kunci ke memori
 }
 
-//kita bikin fungsi untuk menyimpan data ke dalam localstorage
+// 5. FUNGSI TAMBAH TRANSAKSI
+function tambahTransaksi() {
+  let nama = document.getElementById("namaProduk").value.toUpperCase();
+  let nominal = parseInt(document.getElementById("nominal").value) || 0; // ParseInt ubah teks jadi angka
+  let admin = parseInt(document.getElementById("admin").value) || 0;
+  let struk = document.getElementById("struk");
+
+  if (nama === "" || nominal <= 0) {
+    alert("Isi Data Lengkap!");
+    return;
+  }
+
+  // CEK KAMUS: Kalau ada di daftarProduk pakai untung otomatis, kalau nggak ada pakai manual (admin)
+  let infoKamus = daftarProduk[nama];
+  let untungAkhir = infoKamus ? infoKamus.untung : admin;
+  let total = nominal + admin;
+
+  // AMBIL WAKTU: Menit dipadStart biar gak muncul "5:9" tapi "05:09"
+  let waktuSekarang = new Date();
+  let jamMenit = `${waktuSekarang
+    .getHours()
+    .toString()
+    .padStart(2, "0")}:${waktuSekarang
+    .getMinutes()
+    .toString() // toString memaksa angka menjadi string/text
+    .padStart(2, "0")}`;
+
+  // Masukin data ke 'Keranjang' riwayat
+  riwayatPenjualan.push({
+    jamMenit,
+    nama,
+    nominal,
+    admin,
+    total,
+    untung: untungAkhir,
+  });
+
+  tampilkanRiwayat();
+
+  // Reset Input
+  document.getElementById("namaProduk").value = "";
+  document.getElementById("nominal").value = "";
+  document.getElementById("admin").value = "";
+  if (struk) {
+    struk.style.display = "block";
+    struk.innerHTML = `Berhasil! Total: Rp${total.toLocaleString("id-ID")}`;
+  }
+
+  // Bikin kursor otomatis balik ke kotak Nama Produk
+  document.getElementById("namaProduk").focus();
+}
+
+// 7. FUNGSI PENGELOLA DATA (SIMPAN & HAPUS)
 function simpanData() {
-  // localstorage.setitem itu "Nitip" data ke browser biar gak ilang walau komputer mati
-  // JSON.stringify itu kebalikan parse: ngubah objek jadi teks biar bisa disimpan, karena localstorage hanya menerima text
   localStorage.setItem("riwayatPenjualan", JSON.stringify(riwayatPenjualan));
 }
 
-//kita bikin fungsi untuk emnghapus data yang kita inginkan saja
 function hapusSatu(index) {
-  //kita bikin variabel untuk konfirmasi biar ga langsung jalan
-  let yakin = confirm("Yakin Mau Dihapus?");
-  //kita buat logika ketika gajadi ngehapus
-  if (yakin === false) {
-    return;
+  if (confirm("Yakin Mau Dihapus?")) {
+    riwayatPenjualan.splice(index, 1); // Buang 1 data berdasarkan urutannya
+    tampilkanRiwayat();
   }
-  // Splice itu perintah buat buang satu barang di posisi (index) tertentu
-  riwayatPenjualan.splice(index, 1);
-  // Update lagi tampilannya setelah satu data dihapus
-  tampilkanRiwayat();
 }
 
-// Ini perintah buat ngejalanin fungsinya pertama kali pas web baru dibuka
+// 8. FUNGSI RESET DATA
+function resetData() {
+  let yakin = confirm(
+    `Yakin mau 'Buka Buku Baru'? Semua riwayat penjualan hari ini akan DIHAPUS PERMANEN.`
+  );
+
+  if (yakin) {
+    localStorage.removeItem("riwayatPenjualan"); // Hapus memori di browser
+    riwayatPenjualan = []; // Kosongkan variabel di kodingan
+    tampilkanRiwayat(); // Update tampilan (jadi kosong)
+    alert(`Buku berhasil dibersihkan! Selamat berjualan di lembaran baru. 🚀`);
+  }
+}
+
+// 9. FUNGSI SALIN LAPORAN
+function salinLaporan() {
+  // 1. CEK KETERSEDIAAN DATA
+  // Jika riwayat kosong (length === 0), stop fungsi di sini.
+  // Biar kita gak nyalin laporan kosong yang isinya cuma garis-garis doang.
+  if (riwayatPenjualan.length === 0) {
+    alert("Belum ada penjualan, Bro!");
+    return;
+  }
+
+  // 2. INISIALISASI HEADER (KEPALA LAPORAN)
+  // \n adalah karakter khusus untuk 'Enter' atau baris baru.
+  // Tanda bintang (*) di awal & akhir kata bikin teks jadi TEBAL di WhatsApp.
+  let teks = "*LAPORAN PENJUALAN HARI INI*\n";
+  teks += "--------------------------\n";
+
+  let totalUntung = 0; // Wadah untuk menampung total cuan sambil kita ngitung
+
+  // 3. PROSES PENYUSUNAN DAFTAR TRANSAKSI
+  // Kita looping (putar) semua data yang ada di array riwayatPenjualan.
+  riwayatPenjualan.forEach((item) => {
+    // Ubah format nama dari "XL_3GB" jadi "XL 3GB" biar enak dibaca pembeli.
+    let namaBersih = item.nama.replaceAll("_", " ");
+
+    // Susun baris per baris: JAM | NAMA PRODUK | HARGA TOTAL
+    teks += `${item.jamMenit} | ${namaBersih} | Rp${item.total.toLocaleString(
+      "id-ID"
+    )}\n`;
+
+    // Tambahin untung tiap item ke variabel totalUntung.
+    totalUntung += item.untung || 0;
+  });
+
+  // 4. PENYUSUNAN FOOTER (KAKI LAPORAN)
+  teks += "--------------------------\n";
+  teks += `*TOTAL UNTUNG: Rp${totalUntung.toLocaleString("id-ID")}*`;
+
+  // Tambahan bumbu biar laporannya kelihatan pro (tanda miring pakai underscore _)
+  teks += `\n\n_Dicatat otomatis oleh Sistem Kasir Hunter_ 🕶️`;
+
+  // 5. PROSES COPY KE CLIPBOARD (INTI DARI SEMUANYA)
+  // Navigator adalah objek bawaan browser untuk akses fitur hardware/sistem.
+  // writeText(teks) bakal 'menempelkan' variabel teks kita ke memori Copy-Paste.
+  navigator.clipboard
+    .writeText(teks)
+    .then(() => {
+      // Bagian .then() akan jalan KALO proses salin berhasil.
+      alert("Laporan berhasil disalin! Tinggal paste di WA.");
+    })
+    .catch((err) => {
+      // Bagian .catch() jaga-jaga kalau browser lama gak support fitur ini.
+      console.error("Gagal nyalin laporan: ", err);
+      alert("Waduh, browser lo gak kasih izin buat nyalin otomatis.");
+    });
+}
+
+// 8. STARTER (JALAN OTOMATIS SAAT WEB DIBUKA)
 muatDaftarHarga();
 tampilkanRiwayat();
