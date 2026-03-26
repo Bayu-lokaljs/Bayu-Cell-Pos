@@ -1,49 +1,60 @@
-// 1. DAFTAR PRODUK (PASTIKAN SEMUA PAKAI FORMAT {harga, untung})
 // Di sini lo simpan "ingatan" harga modal & untung.
 // Kalau mau nambah produk baru, tinggal contek formatnya di sini.
-const daftarProduk = {
-  XL_3GB_1H: { harga: 7000, untung: 1000 },
-  XL_3GB_3H: { harga: 11000, untung: 1000 },
-  XL_5GB_10H: { harga: 20000, untung: 2000 },
-  XL_7GB_7H: { harga: 24000, untung: 2000 },
-  XL_11GB_7H: { harga: 29000, untung: 2000 },
-  XL_20GB_7H: { harga: 35000, untung: 2500 },
-  AXIS_5GB_1H: { harga: 8000, untung: 1000 },
-  AXIS_5GB_2H: { harga: 10000, untung: 1000 },
-  "AXIS_3.5GB_3H": { harga: 11000, untung: 1500 },
-  AXIS_5GB_3H: { harga: 13000, untung: 1500 },
-  AXIS_13GB_3H: { harga: 18000, untung: 2000 },
-  AXIS_6GB_5H: { harga: 17000, untung: 2000 },
-  AXIS_13GB_5H: { harga: 25000, untung: 2000 },
-  AXIS_25GB_5H: { harga: 30000, untung: 2000 },
-  AXIS_9GB_15H: { harga: 30000, untung: 2000 },
-  AXIS_6GB_30H: { harga: 32000, untung: 2500 },
-  SF_4GB_3H: { harga: 11000, untung: 1000 },
-  SF_4GB_14H: { harga: 21000, untung: 2000 },
-  SF_10GB_6H: { harga: 22000, untung: 2000 },
-  SF_21GB_7H: { harga: 32000, untung: 2500 },
-  "SF_1GB/H_30H": { harga: 78000, untung: 3000 },
-  "SF_2GB/H_30H": { harga: 93000, untung: 4000 },
-  IM3_2GB_1H: { harga: 6000, untung: 1000 },
-  IM3_5GB_2H: { harga: 11000, untung: 1500 },
-  IM3_4GB_5H: { harga: 15000, untung: 2000 },
-  IM3_8GB_5H: { harga: 20000, untung: 2000 },
-  IM3_11GB_7H: { harga: 25000, untung: 2000 },
-  IM3_19GB_7H: { harga: 31000, untung: 2500 },
-  IM3_8GB_30H: { harga: 33000, untung: 2500 },
-  "TRI_2.5GB_1H": { harga: 8000, untung: 1000 },
-  TRI_6GB_2H: { harga: 11000, untung: 1500 },
-  TRI_5GB_3H: { harga: 14000, untung: 2000 },
-  TRI_10GB_5H: { harga: 23000, untung: 2000 },
-  TRI_12GB_7H: { harga: 26000, untung: 2000 },
-  TRI_10GB_28H: { harga: 35000, untung: 2500 },
-  TSEL_4GB_1H: { harga: 8000, untung: 1000 },
-  TSEL_5GB_2H: { harga: 12000, untung: 1000 },
-  TSEL_2GB_3H: { harga: 11000, untung: 1500 },
-  "TSEL_3.5GB_5H": { harga: 14000, untung: 2000 },
-  TSEL_4GB_5H: { harga: 16000, untung: 2000 },
-  TSEL_10GB_7H: { harga: 30000, untung: 2000 },
+// Ambil data stok dari memori browser kalau ada.
+let stokTersimpan = JSON.parse(localStorage.getItem("stokProduk"));
+
+// 1. DAFTAR PRODUK (PASTIKAN SEMUA PAKAI FORMAT {harga, untung, stok})
+const dataAwal = {
+  XL_3GB_1H: { harga: 7000, untung: 1000, stok: 10 },
+  XL_3GB_3H: { harga: 11000, untung: 1000, stok: 10 },
+  XL_5GB_10H: { harga: 20000, untung: 2000, stok: 10 },
+  XL_7GB_7H: { harga: 24000, untung: 2000, stok: 10 },
+  XL_11GB_7H: { harga: 29000, untung: 2000, stok: 10 },
+  XL_20GB_7H: { harga: 35000, untung: 2500, stok: 10 },
+  AXIS_5GB_1H: { harga: 8000, untung: 1000, stok: 10 },
+  AXIS_5GB_2H: { harga: 10000, untung: 1000, stok: 10 },
+  "AXIS_3.5GB_3H": { harga: 11000, untung: 1500, stok: 10 },
+  AXIS_5GB_3H: { harga: 13000, untung: 1500, stok: 10 },
+  AXIS_13GB_3H: { harga: 18000, untung: 2000, stok: 10 },
+  AXIS_6GB_5H: { harga: 17000, untung: 2000, stok: 10 },
+  AXIS_13GB_5H: { harga: 25000, untung: 2000, stok: 10 },
+  AXIS_25GB_5H: { harga: 30000, untung: 2000, stok: 10 },
+  AXIS_9GB_15H: { harga: 30000, untung: 2000, stok: 10 },
+  AXIS_6GB_30H: { harga: 32000, untung: 2500, stok: 10 },
+  SF_4GB_3H: { harga: 11000, untung: 1000, stok: 10 },
+  SF_4GB_14H: { harga: 21000, untung: 2000, stok: 10 },
+  SF_10GB_6H: { harga: 22000, untung: 2000, stok: 10 },
+  SF_21GB_7H: { harga: 32000, untung: 2500, stok: 10 },
+  "SF_1GB/H_30H": { harga: 78000, untung: 3000, stok: 10 },
+  "SF_2GB/H_30H": { harga: 93000, untung: 4000, stok: 10 },
+  IM3_2GB_1H: { harga: 6000, untung: 1000, stok: 10 },
+  IM3_5GB_2H: { harga: 11000, untung: 1500, stok: 10 },
+  IM3_4GB_5H: { harga: 15000, untung: 2000, stok: 10 },
+  IM3_8GB_5H: { harga: 20000, untung: 2000, stok: 10 },
+  IM3_11GB_7H: { harga: 25000, untung: 2000, stok: 10 },
+  IM3_19GB_7H: { harga: 31000, untung: 2500, stok: 10 },
+  IM3_8GB_30H: { harga: 33000, untung: 2500, stok: 10 },
+  "TRI_2.5GB_1H": { harga: 8000, untung: 1000, stok: 10 },
+  TRI_6GB_2H: { harga: 11000, untung: 1500, stok: 10 },
+  TRI_5GB_3H: { harga: 14000, untung: 2000, stok: 10 },
+  TRI_10GB_5H: { harga: 23000, untung: 2000, stok: 10 },
+  TRI_12GB_7H: { harga: 26000, untung: 2000, stok: 10 },
+  TRI_10GB_28H: { harga: 35000, untung: 2500, stok: 10 },
+  TSEL_4GB_1H: { harga: 8000, untung: 1000, stok: 10 },
+  TSEL_5GB_2H: { harga: 12000, untung: 1000, stok: 10 },
+  TSEL_2GB_3H: { harga: 11000, untung: 1500, stok: 10 },
+  "TSEL_3.5GB_5H": { harga: 14000, untung: 2000, stok: 10 },
+  TSEL_4GB_5H: { harga: 16000, untung: 2000, stok: 10 },
+  TSEL_10GB_7H: { harga: 30000, untung: 2000, stok: 10 },
 };
+
+// Gabungkan pakai data tersimpan, kalau gaada pakai data awal
+let daftarProduk = stokTersimpan || dataAwal;
+
+// Bikin fungsi ngunci data tiap ada perubahan
+function simpanStokKeKamus() {
+  localStorage.setItem("stokProduk", JSON.stringify(daftarProduk));
+}
 
 // 2. SISTEM MEMORI (LOCAL STORAGE)
 // Baris ini tugasnya "manggil ingatan" dari browser pas web dibuka.
@@ -104,11 +115,20 @@ function muatDaftarHarga() {
     let namaBersih = key.replaceAll("_", " ");
     // Gunakan optional chaining (?.) biar aman kalau datanya undefined
     let harga = daftarProduk[key]?.harga || 0;
+    let sisa = daftarProduk[key]?.stok || 0;
+
+    // Kalau stok sisa < 5, warnain merah
+    let statusWarna = sisa < 5 ? "stok-kritis" : "stok-aman";
+    let peringatan = sisa < 5 ? "⚠ RE-STOK!" : "Stok:";
 
     // Gambar daftar harga ke layar
-    produk.innerHTML += `<div class="item">${namaBersih}: Rp${harga.toLocaleString(
-      "id-ID"
-    )}</div>`;
+    // Tambahin tombol silang (x) buat hapus produk dari database
+    produk.innerHTML += `
+    <div class="item" style="position: relative;">
+      <span onclick="hapusProdukPermanen('${key}')" style="position: absolute; top: 2px; right: 5px; color: var(--danger-color); cursor: pointer; font-weight: bold; font-size: 1rem;">×</span>
+      ${namaBersih}: Rp${harga.toLocaleString("id-ID")}<br>
+      <small class="${statusWarna}">${peringatan} ${sisa}</small>
+    </div>`;
 
     // Masukin juga ke list dropdown/jatuh ke bawah (datalist)
     if (listSaran) {
@@ -146,9 +166,8 @@ function tampilkanRiwayat() {
 
   // Update tampilan kartu Total Profit di bawah
   let totalCuanElemen = document.getElementById("totalCuan");
-  let warna = untungSeharian > 5000 ? "green" : "orange";
   if (totalCuanElemen) {
-    totalCuanElemen.innerHTML = `<div class="profit-card" style="border-left: 10px solid ${warna}">Total Profit: Rp${untungSeharian.toLocaleString(
+    totalCuanElemen.innerHTML = `<div class="profit-card"">Total Profit: Rp${untungSeharian.toLocaleString(
       "id-ID"
     )}</div>`;
   }
@@ -160,12 +179,38 @@ function tambahTransaksi() {
   let nama = document.getElementById("namaProduk").value.toUpperCase();
   let nominal = parseInt(document.getElementById("nominal").value) || 0; // ParseInt ubah teks jadi angka
   let admin = parseInt(document.getElementById("admin").value) || 0;
+  let tambahanStok = parseInt(document.getElementById("stok").value) || 0;
   let struk = document.getElementById("struk");
 
   if (nama === "" || nominal <= 0) {
     alert("Isi Data Lengkap!");
     return;
   }
+
+  //bikin logika update stok
+  if (tambahanStok > 0) {
+    //kalau inputan tambah stok diisi
+    daftarProduk[nama].stok += tambahanStok;
+    muatDaftarHarga();
+    simpanStokKeKamus();
+    alert(`Stok ${nama} berhasil ditambah ${tambahanStok} biji!`);
+    // RESET INPUT & STOP (Jangan masuk ke riwayat jualan!)
+    document.getElementById("namaProduk").value = "";
+    document.getElementById("stok").value = "";
+    return;
+  }
+
+  //satpam kalo stoknya gaada, jadi ga dihitung
+  if (daftarProduk[nama].stok <= 0) {
+    alert(`Stok Habis!`);
+    return;
+  }
+
+  //kalo udah lolos semua atau mode jualan
+  daftarProduk[nama].stok -= 1; //stok dikurangi 1
+
+  // Simpan data ke memori browser
+  simpanStokKeKamus();
 
   // CEK KAMUS: Kalau ada di daftarProduk pakai untung otomatis, kalau nggak ada pakai manual (admin)
   let infoKamus = daftarProduk[nama];
@@ -193,11 +238,13 @@ function tambahTransaksi() {
   });
 
   tampilkanRiwayat();
+  muatDaftarHarga();
 
   // Reset Input
   document.getElementById("namaProduk").value = "";
   document.getElementById("nominal").value = "";
   document.getElementById("admin").value = "";
+  document.getElementById("stok").value = "";
   if (struk) {
     struk.style.display = "block";
     struk.innerHTML = `Berhasil! Total: Rp${total.toLocaleString("id-ID")}`;
@@ -289,6 +336,59 @@ function salinLaporan() {
     });
 }
 
-// 8. STARTER (JALAN OTOMATIS SAAT WEB DIBUKA)
+// Fungsi reset stok ke angka 10 lagi
+function resetStokGudang() {
+  if (confirm("Yakin mau reset stok gudang?")) {
+    localStorage.removeItem("stokProduk");
+    location.reload();
+    alert("Stok berhasil direset!");
+  }
+}
+
+// Fungsi pendukung admin
+function toggleAdmin() {
+  let panel = document.getElementById("panelAdmin");
+  panel.style.display = panel.style.display === "none" ? "block" : "none";
+}
+
+// Fungsi menyimpan produk baru
+function simpanProdukBaru() {
+  let nama = document
+    .getElementById("adminNama")
+    .value.toUpperCase()
+    .trim()
+    .replaceAll(" ", "_");
+  let harga = parseInt(document.getElementById("adminHarga").value) || 0;
+  let untung = parseInt(document.getElementById("adminUntung").value) || 0;
+  let stok = parseInt(document.getElementById("adminStok").value) || 0;
+
+  if (nama === "" || harga <= 0) {
+    alert("Isi Data Lengkap!");
+    return;
+  }
+
+  daftarProduk[nama] = { harga, untung, stok };
+  muatDaftarHarga();
+  simpanStokKeKamus();
+
+  // Reset form
+  document.getElementById("adminNama").value = "";
+  document.getElementById("adminHarga").value = "";
+  document.getElementById("adminUntung").value = "";
+  document.getElementById("adminStok").value = "";
+  alert(`Produk ${nama} berhasil disimpan!`);
+}
+
+// Fungsi hapus produk permanen
+function hapusProdukPermanen(nama) {
+  if (confirm("Yakin mau hapus produk permanen?")) {
+    delete daftarProduk[nama];
+    muatDaftarHarga();
+    simpanStokKeKamus();
+    alert(`Produk ${nama} berhasil dihapus permanen!`);
+  }
+}
+
+// 10. STARTER (JALAN OTOMATIS SAAT WEB DIBUKA)
 muatDaftarHarga();
 tampilkanRiwayat();
